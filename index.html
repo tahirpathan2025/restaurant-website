@@ -747,6 +747,61 @@
       </div>
     </div>
   </section>
+  <!-- ✅ EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  // ✅ Initialize EmailJS
+  (function () {
+    emailjs.init("smaOi-Jq0lF0WoxdO"); // Replace with your EmailJS Public Key
+  })();
+
+  // ✅ Select the form
+  const bookingForm = document.querySelector(".booking-form form");
+
+  bookingForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Get button reference
+    const btn = bookingForm.querySelector(".btn-book");
+    const originalText = btn.textContent;
+
+    // Disable button during send
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    // Collect form data
+    const templateParams = {
+      name: bookingForm.querySelector('input[placeholder="Your Name"]').value,
+      email: bookingForm.querySelector('input[placeholder="Your Email"]').value,
+      phone: bookingForm.querySelector('input[placeholder="Your Phone"]').value,
+      guests: bookingForm.querySelector("select").value,
+      date: bookingForm.querySelector('input[type="date"]').value,
+      time: bookingForm.querySelector('input[type="time"]').value,
+      requests: bookingForm.querySelector("textarea").value || "No special requests",
+      timestamp: new Date().toLocaleString(),
+    };
+
+    // ✅ Send the booking data to EmailJS
+    emailjs
+      .send("service_p8ibazf", "template_565wy9y", templateParams)
+      .then(
+        () => {
+          alert("✅ Your table booking has been sent successfully!");
+          bookingForm.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("❌ Failed to send booking. Please try again later.");
+        }
+      )
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+  });
+</script>
+
   <section id="find-us" class="py-5">
     <div class="container">
       <div class="row g-4 align-items-stretch">
