@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://bootstrapmade.com/content/demo/Yummy/assets/img/hero-img.png">
+    <title>Zayka Restaurant
+    </title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Zayka<span>.com</span></a>
+
+            <!-- ✅ Toggler Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- ✅ Collapsible Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="#book-table" class="btn btn-book ms-lg-3">Book a Table</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">CONTACT</h2>
+            <p class="section-subtitle">
+                Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info">
+                        <h3>Our Address</h3>
+                        <p>1842 Maple Avenue, Portland, Oregon 97204</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info">
+                        <h3>Email Address</h3>
+                        <p>info@example.com<br>contact@example.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="info">
+                        <h3>Hours of Operation</h3>
+                        <p>Sunday–Fri: 9 AM – 6 PM<br>Saturday: 9 AM – 4 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 🌍 Google Map -->
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.924474423611!2d-74.01020868459473!3d40.70556577933215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a19bcbf71cf%3A0x8a6346ef48b61ef3!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- 📬 Contact Form -->
+    <section class="contact-section" id="contact">
+        <div class="container" style="margin-top: -300px;">
+            <div class="contact-box">
+                <h3>Get in Touch</h3>
+                <form id="contactForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control tech" placeholder="First Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control tech" placeholder="Email Address" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control tech" placeholder="Subject" required>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control tech" rows="5" placeholder="Write Message..."
+                                required></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn-send mt-2">SEND MESSAGE</button>
+                        </div>
+                    </div>
+                </form>
+
+                <script>
+                    document.getElementById("contactForm").addEventListener("submit", function (e) {
+                        e.preventDefault(); // Page reload hone se rokta hai
+                        alert("✅ Your message has been sent successfully!");
+                        this.reset(); // Form ko clear karta hai
+                    });
+                </script>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btns .btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Footer Section -->
+    <footer class="footer bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row gy-4">
+
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-uppercase fw-bold mb-3 text-warning">Zayka</h4>
+                    <p>
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec
+                        velit neque auctor sit amet aliquam vel ullamcorper sit amet ligula.
+                    </p>
+                    <h6 class="fw-semibold mt-4 mb-3">Stay Updated</h6>
+                    <div class="input-group">
+                        <input type="email" class="form-control bg-secondary border-0 text-light"
+                            placeholder="Enter your email">
+                        <button class="btn btn-warning">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Company Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-semibold text-warning mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">About</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Press</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Solutions -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-semibold text-warning mb-3">Solutions</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Digital Strategy</a></li>
+                        <li><a href="#" class="footer-link">Cloud Computing</a></li>
+                        <li><a href="#" class="footer-link">Data Analytics</a></li>
+                        <li><a href="#" class="footer-link">AI Solutions</a></li>
+                        <li><a href="#" class="footer-link">Cybersecurity</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-semibold text-warning mb-3">Get in Touch</h5>
+                    <p><i class="bi bi-geo-alt text-warning me-2"></i>2847 Maple Avenue, Los Angeles, CA 90210</p>
+                    <p><i class="bi bi-telephone text-warning me-2"></i>+1 (555) 987-6543</p>
+                    <p><i class="bi bi-envelope text-warning me-2"></i>contact@example.com</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4 text-secondary">
+
+            <!-- Bottom Footer -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-0">&copy; Copyright <span class="text-warning fw-semibold">Tahir Pathan</span> All Rights
+                    Reserved</p>
+                <div class="footer-policy mt-2 mt-md-0">
+                    <a href="#" class="footer-link me-3">Privacy Policy</a>
+                    <a href="#" class="footer-link me-3">Terms of Service</a>
+                    <a href="#" class="footer-link me-3">Cookie Policy</a>
+                    <span class="text-secondary">Designed by <span class="text-warning">Tahir Pathan</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top" style="height: 50px; width: 50px;">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+
+    <!-- Scroll to Top CSS -->
+    <style>
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 25px;
+            z-index: 99;
+            font-size: 22px;
+            border: none;
+            outline: none;
+            background-color: #ffb703;
+            color: white;
+            cursor: pointer;
+            padding: -3px 16px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #fb8500;
+            transform: scale(1.1);
+
+        }
+
+        .tech {
+            color: black;
+            background-color: #f8f9fa;
+        }
+    </style>
+
+    <!-- Scroll to Top JS -->
+    <script>
+        let mybutton = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+
+    <style>
+        /* smooth floating animation for subtle lift on hover */
+        section .col-md-4 div {
+            transition: all 0.4s ease;
+        }
+
+        section .col-md-4 div:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Navbar auto close when clicking outside or scrolling
+    document.addEventListener('click', function (event) {
+        const navbar = document.querySelector('.navbar-collapse');
+        const toggler = document.querySelector('.navbar-toggler');
+
+        if (navbar.classList.contains('show') && !navbar.contains(event.target) && !toggler.contains(event.target)) {
+            const bsCollapse = new bootstrap.Collapse(navbar, { toggle: true });
+            bsCollapse.hide();
+        }
+    });
+
+    // Navbar auto close when user scrolls
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar-collapse');
+        if (navbar.classList.contains('show')) {
+            const bsCollapse = new bootstrap.Collapse(navbar, { toggle: true });
+            bsCollapse.hide();
+        }
+    });
+</script>
+
+</html>
